@@ -231,6 +231,56 @@ body{background:var(--ink-deep);color:var(--bone);font-family:var(--text);font-s
 .hemi .lab{font:800 13px var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--mist)}
 .hemi .big{font:900 clamp(44px,5.4vw,84px)/.85 var(--display);color:var(--green-hi)}
 .hemi .sub{font-weight:700;font-size:13px;color:var(--mist)}
+/* mapa de Las Rozas */
+.mapgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(12px,2vw,26px);align-items:center}
+@media (max-width:900px){.mapgrid{grid-template-columns:1fr}}
+#rozasMap{max-height:66svh;width:100%}
+#rozasMap .mk{cursor:pointer}
+#rozasMap .mk circle{stroke:#14160d;stroke-width:2;transition:transform .25s;transform-box:fill-box;transform-origin:center}
+#rozasMap .mk.sel circle{stroke:#fff;stroke-width:3;transform:scale(1.25)}
+#rozasMap .mk text{font:800 13px var(--display);fill:#14160d;pointer-events:none}
+.ztable td,.ztable th{padding:0 6px;font-size:12px;line-height:1.18;white-space:nowrap}
+.ztable tr.zh td{font:800 13px var(--display);letter-spacing:.08em;text-transform:uppercase;text-align:left;background:rgba(14,16,9,.85)}
+.ztable tr.cr{cursor:pointer}.ztable tr.cr td{background:rgba(20,22,13,.6)}
+.ztable tr.cr.sel td{background:rgba(63,81,29,.85)}
+.ztable .nb{display:inline-block;width:18px;height:18px;border-radius:50%;font:800 11px/18px var(--display);text-align:center;color:#14160d}
+.ztable .bar{display:inline-block;height:8px;background:var(--green-hi);vertical-align:middle;margin-right:6px}
+/* mosaico de disturbios */
+.mosaic{position:absolute!important;inset:0;z-index:0!important;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:4px;overflow:hidden}
+.mosaic img{width:100%;height:100%;object-fit:cover;filter:saturate(.8) brightness(.38);transform:scale(1.04)}
+.slide.is-on .mosaic img{animation:kbz 14s ease-in-out infinite alternate}
+.slide.is-on .mosaic img:nth-child(2){animation-delay:-4s}.slide.is-on .mosaic img:nth-child(3){animation-delay:-8s}.slide.is-on .mosaic img:nth-child(4){animation-delay:-11s}
+@keyframes kbz{from{transform:scale(1.04)}to{transform:scale(1.16) translate(-2%,-1%)}}
+/* diapositiva épica */
+.epic{justify-content:center;align-items:center;text-align:center}
+.epic .epicbg{background:radial-gradient(70% 55% at 50% 58%,rgba(115,163,93,.38),transparent 65%),radial-gradient(60% 45% at 50% 115%,rgba(241,191,0,.20),transparent 70%),linear-gradient(180deg,#0d0f08,#1a1c11 50%,#24321a)}
+.rays{position:absolute!important;inset:-50%;z-index:0!important;background:repeating-conic-gradient(from 0deg at 50% 50%,rgba(255,255,255,.045) 0 5deg,transparent 5deg 15deg);-webkit-mask-image:radial-gradient(closest-side,#000 25%,transparent 72%);mask-image:radial-gradient(closest-side,#000 25%,transparent 72%);pointer-events:none}
+.slide.is-on .rays{animation:spin 80s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.embers{position:absolute!important;inset:0;width:100%;height:100%;z-index:1!important;pointer-events:none}
+.flagstreak{width:min(78vw,980px);height:clamp(10px,1.4vh,14px);margin-block:clamp(2px,.6vh,8px);background:linear-gradient(#aa151b 0 25%,#f1bf00 25% 75%,#aa151b 75% 100%);opacity:.9;transform-origin:center;transform:scaleX(0)}
+.slide.is-on .flagstreak{animation:streak 1.6s cubic-bezier(.7,0,.2,1) 2.4s forwards}
+@keyframes streak{to{transform:scaleX(1)}}
+.epicstack{align-items:center;gap:clamp(8px,1.6vh,18px);z-index:3}
+.eline{margin:0;font:300 clamp(24px,3.2vw,50px)/1 var(--display);text-transform:uppercase;letter-spacing:.06em;color:var(--mist)}
+.eline b{font-weight:800;color:#fff}
+.emega{margin:0;font-family:var(--display);font-weight:900;text-transform:uppercase;line-height:.82}
+.emega .e3{display:block;font-weight:300;font-size:clamp(48px,7.4vw,124px);letter-spacing:.05em}
+.emega .e4{display:block;font-size:clamp(100px,18vw,300px);letter-spacing:-.01em;background:linear-gradient(100deg,#fff 0%,#fff 38%,#e9ffd9 46%,#8cc56e 50%,#fff 58%,#fff 100%);background-size:260% 100%;background-position:100% 0;-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 34px rgba(140,197,110,.35))}
+.ecta{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px 18px;margin-top:clamp(10px,2vh,22px);font:600 clamp(16px,1.7vw,24px) var(--display);text-transform:uppercase;letter-spacing:.08em;color:var(--mist)}
+.ecta b{font-size:1.6em;color:#fff;font-weight:900;margin-right:4px}
+.ecta i{width:6px;height:6px;background:var(--green-hi);border-radius:50%}
+.ecta .go2{background:var(--green);color:#fff;padding:10px 20px;font-weight:800;letter-spacing:.14em}
+.slide.is-on .ep{animation:epIn .9s cubic-bezier(.2,.8,.2,1) both}
+.slide.is-on .e1{animation-delay:.2s}.slide.is-on .e2{animation-delay:.7s}
+.slide.is-on .e3{animation:trackIn 1.2s cubic-bezier(.2,.8,.2,1) 1.2s both}
+.slide.is-on .e4{animation:bigIn 1.2s cubic-bezier(.2,.8,.2,1) 1.8s both,shine 4s ease-in-out 3.4s infinite}
+.slide.is-on .e5{animation-delay:3s}.slide.is-on .e6{animation:wipeIn 1s cubic-bezier(.7,0,.2,1) 3.6s both}
+@keyframes epIn{from{opacity:0;transform:translateY(24px);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
+@keyframes trackIn{from{opacity:0;letter-spacing:.6em;filter:blur(10px)}to{opacity:1;letter-spacing:.05em;filter:none}}
+@keyframes bigIn{from{opacity:0;transform:scale(1.4)}to{opacity:1;transform:none}}
+@keyframes shine{0%{background-position:100% 0}55%,100%{background-position:-60% 0}}
+@keyframes wipeIn{from{clip-path:inset(0 50% 0 50%);opacity:0}to{clip-path:inset(0 0 0 0);opacity:1}}
 /* colegios */
 .zones{display:grid;gap:12px}
 .zone h4{margin:0 0 6px;font:800 14px var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
@@ -282,7 +332,6 @@ body{background:var(--ink-deep);color:var(--bone);font-family:var(--text);font-s
 
 <main id="deck">
 
-<!-- 0 PORTADA -->
 <section class="slide cover" data-block="29N" data-title="Portada">
   <div class="bg grad" data-depth="0.25"></div>
   <div class="ghost" style="right:-4vw;bottom:-6vh;font-size:44vw" data-depth="-0.15">29N</div>
@@ -296,8 +345,7 @@ body{background:var(--ink-deep);color:var(--bone);font-family:var(--text);font-s
   </div>
 </section>
 
-<!-- ================= BLOQUE I ================= -->
-<section class="slide divider" data-block="I · Precedentes" data-speaker="Miguel · Portavoz del Grupo Municipal" data-title="Bloque I · Cómo hemos llegado aquí">
+<section class="slide divider" data-block="I · Precedentes" data-speaker="Miguel Díez · Portavoz del Grupo Municipal" data-title="Bloque I · Cómo hemos llegado aquí">
   <div class="bg grad" data-depth="0.3"></div>
   <div class="media bgimg" data-file="media/galeria.jpg" data-kind="img" data-depth="0.12"></div>
   <div class="grain"></div>
@@ -305,12 +353,11 @@ body{background:var(--ink-deep);color:var(--bone);font-family:var(--text);font-s
       <div class="roman rise">I</div>
       <h2 class="h1 rise d1">Cómo hemos<br><span class="g" style="color:var(--green-hi)">llegado aquí</span></h2>
       <p class="lead rise d2">De la amnistía al desahucio de Maricarmen. Mil días de legislatura que terminan en unas elecciones adelantadas.</p>
-      <div class="speakercard rise d3"><b>Miguel</b><span>Portavoz del Grupo Municipal</span></div>
+      <div class="speakercard rise d3"><b>Miguel Díez</b><span>Portavoz del Grupo Municipal</span></div>
   </div>
 </section>
 
-
-<section class="slide" data-block="I · Precedentes" data-speaker="Miguel" data-title="Mil días en una línea">
+<section class="slide" data-block="I · Precedentes" data-speaker="Miguel Díez · Portavoz" data-title="Mil días en una línea">
   <div class="bg grad" data-depth="0.2"></div>
   <div class="ghost" style="left:-2vw;top:8vh;font-size:26vw" data-depth="-0.2">1.000 DÍAS</div>
   <div class="stack" style="gap:clamp(16px,3vh,32px)">
@@ -336,7 +383,7 @@ body{background:var(--ink-deep);color:var(--bone);font-family:var(--text);font-s
   <p class="src">Fuentes: BOE; Tribunal Supremo; Audiencia Provincial de Badajoz y de Madrid; El Debate (4 ago 2026); Euronews; The Objective; Infobae (oct. 2026).</p>
 </section>
 
-<section class="slide" data-block="I · Precedentes" data-speaker="Miguel" data-title="Ocho años en doce hechos">
+<section class="slide" data-block="I · Precedentes" data-speaker="Miguel Díez · Portavoz" data-title="Ocho años en doce hechos">
   <div class="bg alarm" data-depth="0.2"></div><div class="grain"></div>
   <div class="stack" style="gap:clamp(14px,2.4vh,26px)">
     <p class="kicker rise">El balance que Sánchez no quiere que recordemos</p>
@@ -359,7 +406,7 @@ body{background:var(--ink-deep);color:var(--bone);font-family:var(--text);font-s
   <p class="src">Resumen de la recopilación «Coherencia España» contrastado con hemeroteca: TC (sentencias de 2021 sobre los estados de alarma); BOE (indultos de 2021, LO 14/2022, Ley 20/2022); CGPJ (revisiones de la LO 10/2022); Ministerio del Interior; Guardia Civil.</p>
 </section>
 
-<section class="slide" data-block="I · Precedentes" data-speaker="Miguel" data-title="Amnistía">
+<section class="slide" data-block="I · Precedentes" data-speaker="Miguel Díez · Portavoz" data-title="Amnistía">
   <div class="bg alarm" data-depth="0.25"></div>
     <div class="fade-bottom"></div><div class="grain"></div>
   <div class="stack">
@@ -374,7 +421,7 @@ body{background:var(--ink-deep);color:var(--bone);font-family:var(--text);font-s
   <p class="src">Fuentes: BOE (LO 1/2024); El Debate (28 dic 2025).</p>
 </section>
 
-<section class="slide" data-block="I · Precedentes" data-speaker="Miguel" data-title="El banquillo del sanchismo">
+<section class="slide" data-block="I · Precedentes" data-speaker="Miguel Díez · Portavoz" data-title="El banquillo del sanchismo">
   <div class="bg grad" data-depth="0.2"></div><div class="grain"></div>
   <div class="stack">
     <p class="kicker rise">Corrupción · cloacas · entorno</p>
@@ -394,7 +441,7 @@ body{background:var(--ink-deep);color:var(--bone);font-family:var(--text);font-s
   <p class="src">Fuentes: Tribunal Supremo (22 jun y 14 oct 2026); Audiencia Provincial de Badajoz (14 jul 2026); Audiencia Provincial de Madrid (jul 2026); Audiencia Nacional (jun 2026); RTVC (20 nov 2025). «Investigado» y «a juicio» no son condenas.</p>
 </section>
 
-<section class="slide" data-block="I · Precedentes" data-speaker="Miguel" data-title="El Fiscal y el Constitucional">
+<section class="slide" data-block="I · Precedentes" data-speaker="Miguel Díez · Portavoz" data-title="El Fiscal y el Constitucional">
   <div class="bg grad" data-depth="0.25"></div>
   <div class="ghost" style="right:-3vw;top:6vh;font-size:30vw" data-depth="-0.2">TC</div><div class="grain"></div>
   <div class="two">
@@ -412,7 +459,7 @@ body{background:var(--ink-deep);color:var(--bone);font-family:var(--text);font-s
   <p class="src">Fuentes: RTVC y Legal Today (20 nov 2025); Vozpópuli (composición y resoluciones del TC).</p>
 </section>
 
-<section class="slide" data-block="I · Precedentes" data-speaker="Miguel" data-title="Inmigración masiva">
+<section class="slide" data-block="I · Precedentes" data-speaker="Miguel Díez · Portavoz" data-title="Inmigración masiva">
   <div class="bg grad" data-depth="0.25"></div>
     <div class="fade-bottom"></div><div class="grain"></div>
   <div class="stack">
@@ -427,7 +474,7 @@ body{background:var(--ink-deep);color:var(--bone);font-family:var(--text);font-s
   <p class="src">Fuentes: INE, Estadística de Migraciones 2021-2024 (887.960 + 1.258.894 + 1.250.991 + 1.288.562 llegadas); INE, población a 1 ene 2021 (7.292.893 nacidos fuera) y a 1 ene 2026 (10.004.581).</p>
 </section>
 
-<section class="slide" data-block="I · Precedentes" data-speaker="Miguel" data-title="Regularización y ley de nietos">
+<section class="slide" data-block="I · Precedentes" data-speaker="Miguel Díez · Portavoz" data-title="Regularización y ley de nietos">
   <div class="bg grad" data-depth="0.25"></div><div class="grain"></div>
   <div class="two">
     <div class="stack">
@@ -443,7 +490,7 @@ body{background:var(--ink-deep);color:var(--bone);font-family:var(--text);font-s
   <p class="src">Fuentes: BOE (15 abr 2026), Diari de Tarragona; ImiDaily vía Visit World (solicitudes, jun 2026); Tribunal Supremo, Sala Tercera; The Objective (12 oct 2026).</p>
 </section>
 
-<section class="slide" data-block="I · Precedentes" data-speaker="Miguel" data-title="Ceuta">
+<section class="slide" data-block="I · Precedentes" data-speaker="Miguel Díez · Portavoz" data-title="Ceuta">
   <div class="bg alarm" data-depth="0.25"></div>
   <div class="kb" aria-hidden="true"><img src="media/trampolin_1.jpg" alt=""><img src="media/trampolin_2.jpg" alt=""></div>
   <div class="grain"></div>
@@ -459,7 +506,7 @@ body{background:var(--ink-deep);color:var(--bone);font-family:var(--text);font-s
   <p class="src">Fotos: Ceuta, mayo de 2021. Fuentes: El Debate (4 ago 2026): Ciudad Autónoma, 80.000 entradas; fuentes de Interior y Delegación, unas 50.000; Marruecos, 40.000; Observatorio de Ceuta y Melilla (12.000 en mayo de 2021); Atalayar (19 may 2021).</p>
 </section>
 
-<section class="slide" data-block="I · Precedentes" data-speaker="Miguel" data-title="Maricarmen">
+<section class="slide" data-block="I · Precedentes" data-speaker="Miguel Díez · Portavoz" data-title="Maricarmen">
   <div class="bg grad" data-depth="0.25"></div>
   <div class="ghost" style="left:-2vw;bottom:-4vh;font-size:30vw" data-depth="-0.15">87</div><div class="grain"></div>
   <div class="two">
@@ -481,7 +528,7 @@ body{background:var(--ink-deep);color:var(--bone);font-family:var(--text);font-s
   <p class="src">Fuentes: Publimetro / EFE (7 oct 2026); El Debate (24 sep 2026): el contrato se rigió por la Ley de Arrendamientos Urbanos de 1994; INE, IPV 1T 2026; Banco de España, Informe Anual 2025.</p>
 </section>
 
-<section class="slide" data-block="I · Precedentes" data-speaker="Miguel" data-title="Desahucios con Sánchez">
+<section class="slide" data-block="I · Precedentes" data-speaker="Miguel Díez · Portavoz" data-title="Desahucios con Sánchez">
   <div class="bg grad" data-depth="0.25"></div><div class="grain"></div>
   <div class="two" style="grid-template-columns:minmax(0,1fr) minmax(0,1.3fr)">
     <div class="stack">
@@ -498,7 +545,7 @@ body{background:var(--ink-deep);color:var(--bone);font-family:var(--text);font-s
   <p class="src">Fuente: CGPJ, lanzamientos practicados: 2018, 59.671; 2019, 54.006; 2020, 29.406 (pandemia); 2021, 41.359; 2022, 38.266; 2023, 26.659; 2024, 27.564; 2025, 24.540 (18.317 por alquiler). Sánchez gobierna desde el 2 de junio de 2018.</p>
 </section>
 
-<section class="slide" data-block="I · Precedentes" data-speaker="Miguel" data-title="Seguridad y cuentas">
+<section class="slide" data-block="I · Precedentes" data-speaker="Miguel Díez · Portavoz" data-title="Seguridad y cuentas">
   <div class="bg grad" data-depth="0.25"></div>
   <div class="media" data-file="media/bg_narco_playa.mp4" data-kind="bgvideo" style="position:absolute;inset:0;z-index:0;border:0;background:none"></div>
   <div class="fade-bottom"></div><div class="grain"></div>
@@ -516,7 +563,7 @@ body{background:var(--ink-deep);color:var(--bone);font-family:var(--text);font-s
   <p class="src">Fuentes: Euronews (27 sep 2026); Banco de España (feb. 2026); AIReF; Ministerio del Interior vía El Español.</p>
 </section>
 
-<section class="slide" data-block="I · Precedentes" data-speaker="Miguel" data-title="¿Por qué convoca ahora?">
+<section class="slide" data-block="I · Precedentes" data-speaker="Miguel Díez · Portavoz" data-title="¿Por qué convoca ahora?">
   <div class="bg green" data-depth="0.25"></div><div class="grain"></div>
   <div class="stack">
     <p class="kicker rise" style="color:var(--ink)">5 de octubre de 2026</p>
@@ -532,7 +579,6 @@ body{background:var(--ink-deep);color:var(--bone);font-family:var(--text);font-s
   <p class="src" style="color:var(--ink)">Fuentes: Infobae y The Objective (5 oct 2026); Euronews (27 sep 2026).</p>
 </section>
 
-<!-- ================= BLOQUE II ================= -->
 <section class="slide divider" data-block="II · Oportunidad histórica" data-speaker="Ignacio Blanch · Responsable de Campaña" data-title="Bloque II · Oportunidad histórica">
   <div class="bg grad" data-depth="0.3"></div><div class="grain"></div>
   <div class="stack">
@@ -596,68 +642,7 @@ body{background:var(--ink-deep);color:var(--bone);font-family:var(--text);font-s
   <p class="src">Estimación de 176 (ciento76.es), mediana de simulaciones; 269 senadores contando los designados por las comunidades.</p>
 </section>
 
-<section class="slide" data-block="II · Oportunidad histórica" data-speaker="Ignacio Blanch" data-title="Contamos contigo">
-  <div class="bg green" data-depth="0.25"></div>
-  <div class="ghost" style="right:-3vw;bottom:-5vh;font-size:30vw;-webkit-text-stroke:2px rgba(34,36,23,.25)" data-depth="-0.2">114</div><div class="grain"></div>
-  <div class="stack" style="color:var(--ink)">
-    <p class="kicker rise" style="color:var(--ink)">Apoderados e interventores</p>
-    <h2 class="mega rise d1" style="font-size:clamp(60px,10.5vw,170px)">Contamos <span style="color:#fff">contigo</span></h2>
-    <div class="row rise d2" style="gap:clamp(20px,5vw,80px)">
-      <div class="stat"><div class="num">114</div><div class="lbl" style="color:var(--ink)"><b>mesas</b> en Las Rozas el 29N</div></div>
-      <div class="stat"><div class="num">16</div><div class="lbl" style="color:var(--ink)"><b>colegios electorales</b></div></div>
-      <div class="stat"><div class="num">70.250</div><div class="lbl" style="color:var(--ink)"><b>electores</b> en 2023 (censo del 23J)</div></div>
-    </div>
-    <p class="bigquote rise d3" style="color:var(--ink)">Un voto que no se vigila <span style="color:#fff">es un voto que se puede perder.</span></p>
-  </div>
-  <p class="src" style="color:var(--ink)">Fuentes: BOCM n.º 243 (12 oct 2026), relación de secciones, mesas y locales del 29N; Ministerio del Interior, fichero de mesas del 23J (censo).</p>
-</section>
-
-<section class="slide" data-block="II · Oportunidad histórica" data-speaker="Elena Garachana · Concejal y coordinadora electoral de Zona" data-title="Colegios y campaña en Las Rozas">
-  <div class="bg grad" data-depth="0.2"></div><div class="grain"></div>
-  <div class="stack">
-    <div class="speakercard rise"><b>Elena Garachana</b><span>Concejal y coordinadora electoral de Zona</span></div>
-    <h2 class="h1 rise d1" style="font-size:clamp(40px,5.6vw,86px)">16 colegios, <span class="light">114 mesas</span></h2>
-    <div class="two rise d2" style="grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);align-items:start">
-      <div class="zones" id="zones" role="group" aria-label="Colegios electorales del 29N por código postal"></div>
-      <div class="panel stack" id="colDetail" aria-live="polite" style="gap:10px"></div>
-    </div>
-  </div>
-  <p class="src">Locales y mesas: BOCM n.º 243 (12 oct 2026). Resultados: ficheros oficiales por mesa (Ministerio del Interior; Comunidad de Madrid para autonómicas), asignando cada mesa al colegio donde vota su sección el 29N. Cuadrados: una mesa cada uno.</p>
-</section>
-
-<section class="slide" data-block="II · Oportunidad histórica" data-speaker="Elena Garachana" data-title="Actos y mesas informativas">
-  <div class="bg grad" data-depth="0.2"></div><div class="grain"></div>
-  <div class="stack">
-    <p class="kicker rise">Lo que hemos pedido a la Junta Electoral · 13-26 nov</p>
-    <h2 class="h1 rise d1" style="font-size:clamp(40px,5.6vw,86px)">Catorce días <span class="light">en la calle</span></h2>
-    <div class="cal rise d2" id="cal"></div>
-  </div>
-  <p class="src">Calendario solicitado por el Grupo Municipal; pendiente de confirmación de la Junta Electoral de Zona. Verde: actos en locales · Dorado: mesas informativas · Verde claro: Multiusos.</p>
-</section>
-
-<section class="slide" data-block="II · Oportunidad histórica" data-speaker="Isabel y Bárbara · Coordinadoras" data-title="Movilización">
-  <div class="bg grad" data-depth="0.2"></div><div class="grain"></div>
-  <div class="stack">
-    <div class="speakercard rise"><b>Isabel y Bárbara</b><span>Coordinadoras</span></div>
-    <h2 class="h1 rise d1" style="font-size:clamp(40px,5.6vw,86px)">Mínimo, <span style="color:var(--green-hi)">un apoderado por mesa</span></h2>
-    <div class="grid rise d2" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr))">
-      <div class="panel"><div class="num" style="font-size:56px;color:var(--green-hi)">1</div><b style="font-size:18px">Apúntate hoy</b><p style="margin:4px 0 0;font-weight:600;color:var(--mist)">La lista circula ya por la sala. Elige tu colegio.</p></div>
-      <div class="panel"><div class="num" style="font-size:56px;color:var(--green-hi)">2</div><b style="font-size:18px">Todo el día</b><p style="margin:4px 0 0;font-weight:600;color:var(--mist)">De la constitución de la mesa al recuento. No hay turnos.</p></div>
-      <div class="panel"><div class="num" style="font-size:56px;color:var(--green-hi)">3</div><b style="font-size:18px">Nadie se va sin las actas</b><p style="margin:4px 0 0;font-weight:600;color:var(--mist)">Hasta que estén cerradas y firmadas.</p></div>
-      <div class="panel" style="border-color:rgba(255,143,134,.5)"><div class="num" style="font-size:56px;color:#ff8f86">4</div><b style="font-size:18px">¿Algo raro? Avisa ya</b><p style="margin:4px 0 0;font-weight:600;color:var(--mist)">Cualquier irregularidad o mesa que haya que impugnar, al Responsable Electoral: <b style="color:var(--bone)">Ignacio Blanch</b>.</p></div>
-    </div>
-    <div class="panel rise d3" style="background:var(--green);border:0;color:var(--ink);padding:clamp(12px,1.6vw,20px) clamp(16px,2vw,26px)">
-      <p style="margin:0;font:800 clamp(14px,1.3vw,18px) var(--display);letter-spacing:.16em;text-transform:uppercase">El objetivo</p>
-      <p style="margin:2px 0 0;font:900 clamp(30px,4vw,62px)/.92 var(--display);text-transform:uppercase">Llenar los colegios de Las Rozas <span style="color:#fff">de apoderados de VOX</span></p>
-    </div>
-    <div class="row rise d4" style="align-items:center;gap:clamp(14px,3vw,36px)">
-      <span class="tag red" style="font-size:clamp(16px,1.6vw,22px)">Formación obligada</span>
-      <p class="h2" style="font-size:clamp(22px,2.6vw,38px)">Sesiones online. <span style="color:var(--green-hi)">Es muy necesario asistir.</span></p>
-    </div>
-  </div>
-</section>
-
-<section class="slide" data-block="II · Oportunidad histórica" data-speaker="Isabel y Bárbara" data-title="Cómo vota Las Rozas">
+<section class="slide" data-block="II · Oportunidad histórica" data-speaker="Miguel Díez · Portavoz" data-title="Cómo vota Las Rozas">
   <div class="bg grad" data-depth="0.2"></div><div class="grain"></div>
   <div class="stack">
     <p class="kicker rise">Las Rozas en las urnas</p>
@@ -674,31 +659,24 @@ body{background:var(--ink-deep);color:var(--bone);font-family:var(--text);font-s
   <p class="src">Elaboración propia con los ficheros oficiales por mesa: Ministerio del Interior (generales, municipales y europeas) y Comunidad de Madrid (autonómicas 2019, 2021 y 2023). Porcentaje sobre voto válido, sin voto CERA.</p>
 </section>
 
-<section class="slide" data-block="II · Oportunidad histórica" data-speaker="Isabel y Bárbara" data-title="Colegio a colegio">
-  <div class="bg grad" data-depth="0.2"></div><div class="grain"></div>
-  <div class="stack" style="gap:12px">
-    <div class="row rise" style="align-items:flex-end;justify-content:space-between">
-      <h2 class="h1" style="font-size:clamp(36px,4.6vw,70px)">Colegio <span class="light">a colegio</span></h2>
-      <div class="seg" id="heatSeg" role="group" aria-label="Qué mostrar"><button type="button" data-m="VOX" aria-pressed="true">VOX</button><button type="button" data-m="PP" aria-pressed="false">PP</button><button type="button" data-m="PSOE" aria-pressed="false">PSOE</button><button type="button" data-m="PART" aria-pressed="false">Participación</button></div>
+<section class="slide" data-block="II · Oportunidad histórica" data-speaker="Miguel Díez · Portavoz" data-title="Tracking del PSOE">
+  <div class="bg alarm" data-depth="0.2"></div><div class="grain"></div>
+  <div class="stack">
+    <p class="kicker rise">Lo que el PSOE mide en Las Rozas</p>
+    <h2 class="h1 rise d1" style="font-size:clamp(40px,5.6vw,86px)">VOX, <span style="color:var(--green-hi)">27,4 %</span> <span class="light">en Las Rozas</span></h2>
+    <div class="two rise d2" style="grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)">
+      <svg id="trackChart" class="chart" viewBox="0 0 760 360" role="img" aria-label="Tracking del PSOE para Las Rozas el 29N frente al resultado del 23J"></svg>
+      <div class="stack" style="gap:10px">
+        <div class="stat"><div class="num" style="font-size:clamp(56px,7vw,110px);color:var(--green-hi)">+10,4</div><div class="lbl"><b>puntos para VOX</b> sobre el 23J (17,0 %). Sería nuestro mejor resultado en Las Rozas.</div></div>
+        <p style="margin:0;font-weight:600;color:var(--mist)">Nuestro techo en Las Rozas fue el 22,1 % (noviembre de 2019). Su propio tracking nos pone por encima: <b style="color:var(--bone)">se puede</b>.</p>
+      </div>
     </div>
-    <div class="tbl-scroll rise d1"><table class="heat" id="heat"></table></div>
+    <div class="legend rise d3"><span><i style="background:rgba(255,255,255,.28)"></i>23J 2023 (resultado)</span><span><i style="background:#8cc56e"></i>Tracking del PSOE · 29N</span></div>
   </div>
-  <p class="src">Porcentaje sobre voto válido (participación: votantes sobre censo de mesa). Cada mesa, asignada al colegio donde vota su sección el 29N; algunas secciones se han dividido desde 2019. Fuentes: Ministerio del Interior y Comunidad de Madrid, ficheros por mesa.</p>
+  <p class="src">Tracking interno del PSOE para Las Rozas («Ciudad seleccionada»), documento facilitado al Grupo Municipal; no es una encuesta publicada. 23J: Ministerio del Interior, voto válido sin CERA.</p>
 </section>
 
-<section class="slide" data-block="II · Oportunidad histórica" data-speaker="Isabel y Bárbara" data-title="Nuestros votos, colegio a colegio">
-  <div class="bg grad" data-depth="0.2"></div><div class="grain"></div>
-  <div class="stack" style="gap:12px">
-    <p class="kicker rise">Votos a VOX en cada colegio · generales y municipales</p>
-    <h2 class="h1 rise d1" style="font-size:clamp(36px,4.8vw,72px)">Nuestros votos, <span class="light">colegio a colegio</span></h2>
-    <div class="tbl-scroll rise d2"><table class="heat" id="votesTbl"></table></div>
-  </div>
-  <p class="src">Votos válidos a VOX en las mesas de cada colegio (ficheros oficiales por mesa del Ministerio del Interior). Barra: comparada con el mejor resultado de ese colegio. Ordenado por votos del 23J.</p>
-</section>
-
-
-
-<section class="slide" data-block="II · Oportunidad histórica" data-speaker="Ignacio Blanch" data-title="VOX: 2019, 2023 y 29N">
+<section class="slide" data-block="II · Oportunidad histórica" data-speaker="Miguel Díez · Portavoz" data-title="VOX: 2019, 2023 y 29N">
   <div class="bg grad" data-depth="0.2"></div><div class="grain"></div>
   <div class="stack" style="gap:10px">
     <p class="kicker rise">De dónde venimos y hasta dónde podemos llegar</p>
@@ -715,65 +693,66 @@ body{background:var(--ink-deep);color:var(--bone);font-family:var(--text);font-s
   <p class="src">España 29N: 125 encuestas de 2026. Central, media del último mes; mínimo y máximo, la encuesta más baja y la más alta de los últimos 45 días ±1,5 puntos. Las Rozas: en 2023 votó 4,6 puntos por encima de España (proporción ×1,37); se aplica la media de ambos métodos a cada escenario. Puntos: frente a 2023 (12,4 % y 17,0 %).</p>
 </section>
 
-<section class="slide" data-block="II · Oportunidad histórica" data-speaker="Ignacio Blanch" data-title="Tracking del PSOE">
-  <div class="bg alarm" data-depth="0.2"></div><div class="grain"></div>
+<section class="slide" data-block="II · Oportunidad histórica" data-speaker="Ignacio Blanch" data-title="Las Rozas, colegio a colegio">
+  <div class="bg grad" data-depth="0.2"></div><div class="grain"></div>
+  <div class="stack" style="gap:10px">
+    <h2 class="h1 rise d1" style="font-size:clamp(32px,3.8vw,58px)">Las Rozas, <span class="light">colegio a colegio</span> <span class="kicker" style="font-size:clamp(13px,1.2vw,17px);vertical-align:middle">16 colegios · 114 mesas · 3 zonas</span></h2>
+    <div class="mapgrid rise d2">
+      <svg id="rozasMap" class="chart" viewBox="0 0 560 600" role="img" aria-label="Mapa de Las Rozas con los 16 colegios electorales del 29N por zonas"></svg>
+      <div class="tbl-scroll"><table class="heat ztable" id="zoneTbl"></table></div>
+    </div>
+  </div>
+  <p class="src">Locales y mesas: BOCM n.º 243 (12 oct 2026). Ubicación: OpenStreetMap. Resultados: ficheros oficiales por mesa del Ministerio del Interior, cada mesa asignada al colegio donde vota su sección el 29N. Círculos: tamaño según el número de mesas.</p>
+</section>
+
+<section class="slide" data-block="II · Oportunidad histórica" data-speaker="Ignacio Blanch" data-title="Actos y mesas informativas">
+  <div class="bg grad" data-depth="0.2"></div><div class="grain"></div>
   <div class="stack">
-    <p class="kicker rise">Lo que el PSOE mide en Las Rozas</p>
-    <h2 class="h1 rise d1" style="font-size:clamp(40px,5.6vw,86px)">VOX, <span style="color:var(--green-hi)">27,4 %</span> <span class="light">en Las Rozas</span></h2>
-    <div class="two rise d2" style="grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)">
-      <svg id="trackChart" class="chart" viewBox="0 0 760 360" role="img" aria-label="Tracking del PSOE para Las Rozas el 29N frente al resultado del 23J"></svg>
-      <div class="stack" style="gap:10px">
-        <div class="stat"><div class="num" style="font-size:clamp(56px,7vw,110px);color:var(--green-hi)">+10,4</div><div class="lbl"><b>puntos para VOX</b> sobre el 23J (17,0 %). Sería nuestro mejor resultado en Las Rozas.</div></div>
-        <p style="margin:0;font-weight:600;color:var(--mist)">Está dentro de nuestra horquilla para Las Rozas (21,6 %-27,6 %), en la parte alta. Su propio tracking lo dice: <b style="color:var(--bone)">se puede</b>.</p>
-      </div>
-    </div>
-    <div class="legend rise d3"><span><i style="background:rgba(255,255,255,.28)"></i>23J 2023 (resultado)</span><span><i style="background:#8cc56e"></i>Tracking del PSOE · 29N</span></div>
+    <p class="kicker rise">Lo que hemos pedido a la Junta Electoral · 13-26 nov</p>
+    <h2 class="h1 rise d1" style="font-size:clamp(40px,5.6vw,86px)">Catorce días <span class="light">en la calle</span></h2>
+    <div class="cal rise d2" id="cal"></div>
   </div>
-  <p class="src">Tracking interno del PSOE para Las Rozas («Ciudad seleccionada»), documento facilitado al Grupo Municipal; no es una encuesta publicada. 23J: Ministerio del Interior, voto válido sin CERA.</p>
-</section>
-<section class="slide" data-block="II · Oportunidad histórica" data-speaker="Ignacio Blanch" data-title="Objetivo 29N por colegio">
-  <div class="bg grad" data-depth="0.2"></div><div class="grain"></div>
-  <div class="two" style="grid-template-columns:minmax(0,1fr) minmax(0,1.7fr)">
-    <div class="stack">
-      <p class="kicker rise">Objetivo 29N: 24,6 % en Las Rozas</p>
-      <h2 class="h1 rise d1" style="font-size:clamp(40px,5.2vw,80px)">Cuánto <span style="color:var(--green-hi)">hay que subir</span></h2>
-      <div class="stat rise d2"><div class="num" id="objTotal" style="font-size:clamp(56px,7vw,110px);color:var(--green-hi)">+4.280</div><div class="lbl"><b>votos más que el 23J</b> para llegar al escenario central. Así se reparten.</div></div>
-      <p class="lead rise d3" style="font-size:clamp(14px,1.3vw,17px)">Gris: lo que sacamos el 23J. Verde: el objetivo. Número: votos que faltan.</p>
-    </div>
-    <svg id="objChart" class="chart rise d2" viewBox="0 0 700 600" role="img" aria-label="Objetivo de voto a VOX por colegio para el 29N"></svg>
-  </div>
-  <p class="src">Objetivo: el porcentaje del 23J de cada colegio multiplicado por 1,45 (24,6 % ÷ 17,0 %), con la participación del 23J. Escenario central de la proyección para Las Rozas.</p>
-</section>
-<section class="slide" data-block="II · Oportunidad histórica" data-speaker="Ignacio Blanch" data-title="Mayo de 2027: concejales">
-  <div class="bg grad" data-depth="0.2"></div>
-  <div class="ghost" style="right:-3vw;top:5vh;font-size:28vw" data-depth="-0.2">2027</div><div class="grain"></div>
-  <div class="stack" style="gap:14px">
-    <p class="kicker rise">Municipales · mayo de 2027 · 25 concejales</p>
-    <h2 class="h1 rise d1" style="font-size:clamp(40px,5.4vw,84px)">De 3 concejales <span style="color:var(--green-hi)">a 7</span></h2>
-    <div class="hemis rise d2" id="hemis"></div>
-    <div class="row rise d3" style="gap:clamp(16px,3vw,44px);align-items:center">
-      <div class="stat"><div class="num" style="font-size:clamp(44px,5vw,80px);color:var(--green-hi)">3,3</div><div class="lbl"><b>puntos más = un concejal más</b>. Cada punto son unos 530 votos.</div></div>
-      <p class="lead" style="font-size:clamp(14px,1.3vw,18px);max-width:52ch">Conservador, neutro y optimista: el voto del 29N en Las Rozas trasladado a las municipales con la proporción de 2023 (0,70 · 0,77 · 0,85).</p>
-    </div>
-  </div>
-  <p class="src">Reparto D'Hondt de 25 concejales con barrera del 5 %. Supuesto: el resto de partidos como en 2023 y lo que gana VOX lo pierde el PP. Municipales 2023 (Ministerio del Interior): PP 18, VOX 3, PSOE 3, Más Madrid 1. Es una simulación, no una encuesta.</p>
+  <p class="src">Calendario solicitado por el Grupo Municipal; pendiente de confirmación de la Junta Electoral de Zona. Verde: actos en locales · Dorado: mesas informativas · Verde claro: Multiusos.</p>
 </section>
 
-<section class="slide" data-block="II · Oportunidad histórica" data-speaker="Ignacio Blanch" data-title="Mayo de 2027: la absoluta del PP">
-  <div class="bg grad" data-depth="0.2"></div><div class="grain"></div>
-  <div class="two" style="grid-template-columns:minmax(0,1fr) minmax(0,1.9fr)">
-    <div class="stack">
-      <p class="kicker rise" style="color:var(--gold)">El horizonte</p>
-      <h2 class="h1 rise d1" style="font-size:clamp(40px,5.2vw,80px)">Quitarle <span style="color:var(--gold)">la absoluta</span> al PP</h2>
-      <div class="stat rise d2"><div class="num" style="font-size:clamp(64px,8.4vw,136px);color:var(--gold)">30 %</div><div class="lbl"><b>VOX en las municipales</b>: el PP baja a 12 concejales y deja de gobernar solo. Nosotros, 9.</div></div>
-      <p class="lead rise d3" style="font-size:clamp(14px,1.3vw,17px)">Hoy el PP tiene 18 de 25. La mayoría absoluta son <b>13</b>.</p>
+<section class="slide" data-block="II · Oportunidad histórica" data-speaker="Isabel y Bárbara · Movilización y recuento" data-title="Contamos contigo">
+  <div class="bg green" data-depth="0.25"></div>
+  <div class="ghost" style="right:-3vw;bottom:-5vh;font-size:30vw;-webkit-text-stroke:2px rgba(34,36,23,.25)" data-depth="-0.2">114</div><div class="grain"></div>
+  <div class="stack" style="color:var(--ink)">
+    <div class="speakercard rise" style="border-left-color:var(--ink)"><b>Isabel y Bárbara</b><span style="color:var(--ink)">Movilización y recuento</span></div>
+    <h2 class="mega rise d1" style="font-size:clamp(60px,10.5vw,170px)">Contamos <span style="color:#fff">contigo</span></h2>
+    <div class="row rise d2" style="gap:clamp(20px,5vw,80px);align-items:flex-end">
+      <div class="stat"><div class="num" data-count="16">16</div><div class="lbl" style="color:var(--ink)"><b>colegios</b> electorales</div></div>
+      <div class="stat"><div class="num" data-count="114">114</div><div class="lbl" style="color:var(--ink)"><b>mesas</b> en Las Rozas el 29N</div></div>
+      <div class="stat"><div class="num" data-count="114" style="color:#fff">114</div><div class="lbl" style="color:var(--ink)"><b>apoderados de VOX</b>: nuestro objetivo, uno por mesa</div></div>
     </div>
-    <svg id="ladder" class="chart rise d2" viewBox="0 0 760 470" role="img" aria-label="Concejales de VOX y del PP según el porcentaje de VOX en las municipales"></svg>
+    <p class="bigquote rise d3" style="color:var(--ink)">Un voto que no se vigila <span style="color:#fff">es un voto que se puede perder.</span></p>
   </div>
-  <p class="src">Simulación D'Hondt sobre las municipales de 2023: resto de partidos iguales y trasvase directo del PP a VOX. Si el PP perdiera votos hacia otros partidos o la abstención, la absoluta caería antes.</p>
+  <p class="src" style="color:var(--ink)">BOCM n.º 243 (12 oct 2026): relación de secciones, mesas y locales del 29N en Las Rozas.</p>
 </section>
 
-<!-- ================= BLOQUE III ================= -->
+<section class="slide" data-block="II · Oportunidad histórica" data-speaker="Isabel y Bárbara · Movilización y recuento" data-title="Cómo nos organizamos">
+  <div class="bg grad" data-depth="0.2"></div><div class="grain"></div>
+  <div class="stack">
+    <p class="kicker rise">Movilización y recuento</p>
+    <h2 class="h1 rise d1" style="font-size:clamp(40px,5.6vw,86px)">Cómo <span style="color:var(--green-hi)">nos organizamos</span></h2>
+    <div class="grid rise d2" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr))">
+      <div class="panel"><div class="num" style="font-size:56px;color:var(--green-hi)">1</div><b style="font-size:18px">Apúntate hoy</b><p style="margin:4px 0 0;font-weight:600;color:var(--mist)">La lista circula ya por la sala. Elige tu colegio.</p></div>
+      <div class="panel" style="border-color:var(--gold)"><div class="num" style="font-size:56px;color:var(--gold)">2</div><b style="font-size:18px">Un responsable por colegio</b><p style="margin:4px 0 0;font-weight:600;color:var(--mist)">Lo elegimos entre los apoderados. Durante toda la jornada, en <b style="color:var(--bone)">contacto constante con Ignacio Blanch</b>.</p></div>
+      <div class="panel"><div class="num" style="font-size:56px;color:var(--green-hi)">3</div><b style="font-size:18px">Todo el día</b><p style="margin:4px 0 0;font-weight:600;color:var(--mist)">De la constitución de la mesa al recuento. Nadie se va sin las actas cerradas.</p></div>
+      <div class="panel" style="border-color:rgba(255,143,134,.5)"><div class="num" style="font-size:56px;color:#ff8f86">4</div><b style="font-size:18px">¿Algo raro? Avisa ya</b><p style="margin:4px 0 0;font-weight:600;color:var(--mist)">Cualquier irregularidad o mesa que impugnar: al responsable del colegio y a Ignacio Blanch.</p></div>
+    </div>
+    <div class="panel rise d3" style="background:var(--green);border:0;color:var(--ink);padding:clamp(12px,1.6vw,20px) clamp(16px,2vw,26px)">
+      <p style="margin:0;font:800 clamp(14px,1.3vw,18px) var(--display);letter-spacing:.16em;text-transform:uppercase">El objetivo</p>
+      <p style="margin:2px 0 0;font:900 clamp(30px,4vw,62px)/.92 var(--display);text-transform:uppercase">114 apoderados: <span style="color:#fff">llenar los colegios de Las Rozas de VOX</span></p>
+    </div>
+    <div class="row rise d4" style="align-items:center;gap:clamp(14px,3vw,36px)">
+      <span class="tag red" style="font-size:clamp(16px,1.6vw,22px)">Formación obligada</span>
+      <p class="h2" style="font-size:clamp(22px,2.6vw,38px)">Sesiones online. <span style="color:var(--green-hi)">Es muy necesario asistir.</span></p>
+    </div>
+  </div>
+</section>
+
 <section class="slide divider" data-block="III · El futuro" data-speaker="Ignacio Blanch" data-title="Bloque III · ¿Qué nos depara el futuro?">
   <div class="bg alarm" data-depth="0.3"></div><div class="grain"></div>
   <div class="stack">
@@ -783,7 +762,7 @@ body{background:var(--ink-deep);color:var(--bone);font-family:var(--text);font-s
   </div>
 </section>
 
-<section class="slide" data-block="III · El futuro" data-title="Vídeo: Europa en llamas">
+<section data-speaker="Ignacio Blanch" class="slide" data-block="III · El futuro" data-title="Vídeo: Europa en llamas">
   <div class="bg alarm" data-depth="0.2"></div>
   <div class="media vidwrap" data-file="media/video_europa2.mp4" data-kind="video">
     <div class="ph"><b>Europa en llamas</b></div>
@@ -791,7 +770,7 @@ body{background:var(--ink-deep);color:var(--bone);font-family:var(--text);font-s
   </div>
 </section>
 
-<section class="slide" data-block="III · El futuro" data-title="Mapa: Europa arde">
+<section data-speaker="Ignacio Blanch" class="slide" data-block="III · El futuro" data-title="Mapa: Europa arde">
   <div class="bg alarm" data-depth="0.15"></div><div class="grain"></div>
   <div class="stack">
     <p class="kicker rise">Octubre de 2026 · toca una ciudad</p>
@@ -804,10 +783,9 @@ body{background:var(--ink-deep);color:var(--bone);font-family:var(--text);font-s
   <p class="src">Fuentes: Infobae («El mes de la furia», 24 oct 2026); elDiario.es (Bilbao, 26 oct 2026); Wikipedia (protestas estudiantiles en Francia 2026); Vozpópuli (22 oct 2026); Artículo14 (24 oct 2026).</p>
 </section>
 
-
-<section class="slide" data-block="III · El futuro" data-title="Las cifras de la calle">
+<section data-speaker="Ignacio Blanch" class="slide" data-block="III · El futuro" data-title="Las cifras de la calle">
   <div class="bg alarm" data-depth="0.2"></div>
-  <div class="media" data-file="media/bilbao.mp4" data-kind="bgvideo" style="position:absolute;inset:0;z-index:0;border:0;background:none"></div>
+  <div class="mosaic" aria-hidden="true"><img src="media/caos_1.jpg" alt=""><img src="media/caos_3.jpg" alt=""><img src="media/caos_4.jpg" alt=""><img src="media/caos_5.jpg" alt=""></div>
   <div class="fade-bottom"></div><div class="grain"></div>
   <div class="stack">
     <p class="kicker rise">Un mes en Europa</p>
@@ -819,11 +797,13 @@ body{background:var(--ink-deep);color:var(--bone);font-family:var(--text);font-s
     </div>
     <p class="lead rise d2">Detrás: <b>sindicatos estudiantiles y de izquierda, colectivos de extrema izquierda y antifascistas, y convocatorias anónimas en redes</b>. En Francia, el Gobierno acusa a La France Insoumise de avivar los disturbios.</p>
   </div>
-  <p class="src">Fuentes: Infobae (24 oct 2026); Vozpópuli (22 oct 2026); Wikipedia (2026 French student protests).</p>
+  <p class="src">Imágenes: París y Bilbao, octubre de 2026. Fuentes: Infobae (24 oct 2026); Vozpópuli (22 oct 2026); Wikipedia (2026 French student protests).</p>
 </section>
 
-<section class="slide" data-block="III · El futuro" data-title="Orden o caos">
+<section data-speaker="Ignacio Blanch" class="slide" data-block="III · El futuro" data-title="Orden o caos">
   <div class="bg alarm" data-depth="0.3"></div>
+  <div class="media" data-file="media/bilbao.mp4" data-kind="bgvideo" style="position:absolute;inset:0;z-index:0;border:0;background:none"></div>
+  <div class="fade-bottom"></div>
   <div class="ghost" style="left:-3vw;top:4vh;font-size:34vw;-webkit-text-stroke-color:rgba(255,143,134,.14)" data-depth="-0.25">CAOS</div><div class="grain"></div>
   <div class="stack">
     <h2 class="mega rise">Orden <span class="out">o caos</span></h2>
@@ -831,7 +811,7 @@ body{background:var(--ink-deep);color:var(--bone);font-family:var(--text);font-s
   </div>
 </section>
 
-<section class="slide" data-block="III · El futuro" data-title="Europa cambia de ciclo">
+<section data-speaker="Ignacio Blanch" class="slide" data-block="III · El futuro" data-title="Europa cambia de ciclo">
   <div class="bg grad" data-depth="0.2"></div><div class="grain"></div>
   <div class="stack">
     <p class="kicker rise">Los próximos doce meses</p>
@@ -847,113 +827,31 @@ body{background:var(--ink-deep);color:var(--bone);font-family:var(--text);font-s
   <p class="src">Fuentes: Gobierno de Francia vía The Objective y Reuters (1 jul 2026); Il Sole 24 Ore (plan de Meloni, sin fecha oficial).</p>
 </section>
 
-<section class="slide" data-block="III · El futuro" data-title="Fernando Paz: Europa ante su historia">
-  <div class="bg grad" data-depth="0.2"></div><div class="grain"></div>
-  <div class="two" style="grid-template-columns:minmax(0,1fr) minmax(0,1.3fr)">
-    <div class="stack">
-      <p class="kicker rise">Fernando Paz</p>
-      <h2 class="h1 rise d1" style="font-size:clamp(44px,6vw,92px)">Europa <span class="light">ante su historia</span></h2>
-      <p class="lead rise d2">Dos cortes. Pulsa en cada uno para verlo con sonido.</p>
-    </div>
-    <div class="row rise d2" style="justify-content:center;flex-wrap:nowrap;gap:14px">
-      <div class="media vwrap" data-file="media/paz1.mp4" data-kind="video" style="height:min(62svh,600px)"><div class="ph"><b>Parte 1</b></div><button class="playbtn" type="button">▶ 1</button></div>
-      <div class="media vwrap" data-file="media/paz2.mp4" data-kind="video" style="height:min(62svh,600px)"><div class="ph"><b>Parte 2</b></div><button class="playbtn" type="button">▶ 2</button></div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= BLOQUE IV ================= -->
-<section class="slide divider" data-block="IV · Lo que ofrece VOX" data-speaker="Ignacio Blanch" data-title="Bloque IV · Lo que ofrece VOX">
-  <div class="bg green" data-depth="0.3"></div><div class="grain"></div>
-  <div class="stack" style="color:var(--ink)">
-    <div class="roman rise" style="-webkit-text-stroke-color:var(--ink)">IV</div>
-    <h2 class="h1 rise d1">Lo que <span style="color:#fff">ofrece VOX</span></h2>
-    <p class="lead rise d2" style="color:var(--ink)">En concreto. Con números.</p>
-  </div>
-</section>
-
-<section class="slide" data-block="IV · Lo que ofrece VOX" data-title="Jorge Buxadé: identidad">
+<section class="slide" data-block="III · El futuro" data-speaker="Ignacio Blanch" data-title="Vídeo final: Fernando Paz">
   <div class="bg grad" data-depth="0.2"></div>
-  <div class="media vidwrap" data-file="media/buxade.mp4" data-kind="video">
-    <div class="ph"><b>Jorge Buxadé · Identidad</b></div>
+  <div class="media vidwrap" data-file="media/paz_final.mp4" data-kind="video">
+    <div class="ph"><b>Fernando Paz</b></div>
     <button class="playbtn" type="button">▶ Reproducir</button>
   </div>
 </section>
 
-<section class="slide" data-block="IV · Lo que ofrece VOX" data-title="Economía">
-  <div class="bg grad" data-depth="0.2"></div>
-  <div class="ghost" style="right:-2vw;bottom:-4vh;font-size:32vw" data-depth="-0.2">+418</div><div class="grain"></div>
-  <div class="stack">
-    <p class="kicker rise">Economía · si cobras 35.000 € al año</p>
-    <h2 class="mega rise d1">+418 <span class="g">€</span></h2>
-    <p class="h2 rise d2"><span class="light">más al mes.</span> Más de 5.000 € al año. Para ti.</p>
-    <div class="offer rise d3">
-      <div class="panel"><h3>22.000 €</h3><p>exentos de IRPF. Hasta ahí, cero.</p></div>
-      <div class="panel"><h3>15 % · 25 %</h3><p>Solo dos tramos. 4 puntos menos por hijo.</p></div>
-      <div class="panel"><h3>IVA 18 · 8</h3><p>Más barata la compra de cada día.</p></div>
-      <div class="panel"><h3>Cuota cero</h3><p>para el autónomo que gana menos del salario mínimo.</p></div>
-    </div>
-    <a class="cta rise d4" href="https://sueldovox.es" target="_blank" rel="noopener">Calcúlalo en sueldovox.es ▸</a>
+<section class="slide epic" data-block="29N" data-speaker="Ignacio Blanch" data-title="Necesitamos a todos">
+  <div class="bg epicbg" data-depth="0.35"></div>
+  <div class="rays" aria-hidden="true"></div>
+  <canvas class="embers" aria-hidden="true"></canvas>
+  <div class="ghost" style="left:50%;top:50%;transform:translate(-50%,-50%);font-size:34vw;-webkit-text-stroke:2px rgba(140,197,110,.10)" data-depth="-0.3">TODOS</div>
+    <div class="grain"></div>
+  <div class="stack epicstack">
+    <p class="kicker ep e1">29 de noviembre · Las Rozas</p>
+    <p class="eline ep e2">Esto lo cambia <b>todo</b>.</p>
+    <h2 class="emega"><span class="ep e3">Necesitamos</span><span class="ep e4">a todos</span></h2>
+    <div class="flagstreak" aria-hidden="true"></div>
+    <p class="eline ep e5">Para ganar. <b>Para recuperar España.</b></p>
+    <div class="ecta ep e6"><span><b class="num" data-count="114">114</b> mesas</span><i></i><span><b class="num" data-count="114">114</b> apoderados de VOX</span><i></i><span class="go2">Apúntate hoy</span></div>
   </div>
-  <p class="src">Programa económico de VOX. Cálculo para un asalariado sin hijos con la metodología de sueldovox.es; en la Comunidad de Madrid, unos 385 €/mes.</p>
 </section>
 
-<section class="slide" data-block="IV · Lo que ofrece VOX" data-title="Vivienda">
-  <div class="bg grad" data-depth="0.2"></div><div class="grain"></div>
-  <div class="stack">
-    <p class="kicker rise">Vivienda · una España de propietarios</p>
-    <div class="grid rise d1" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))">
-      <div><div class="num" style="font-size:clamp(70px,10vw,160px);color:var(--green-hi)">0 %</div><p class="h2" style="font-size:clamp(22px,2.4vw,34px)">IVA en tu primera vivienda</p><p style="margin:4px 0 0;font-weight:600;color:var(--mist)">En una casa de 300.000 €, 30.000 € menos de entrada.</p></div>
-      <div><div class="num" style="font-size:clamp(70px,10vw,160px)">48 h</div><p class="h2" style="font-size:clamp(22px,2.4vw,34px)">Okupas fuera</p><p style="margin:4px 0 0;font-weight:600;color:var(--mist)">Sin padrón para el okupa. Sin IBI para el propietario.</p></div>
-      <div><div class="num" style="font-size:clamp(70px,10vw,160px);color:var(--green-hi)">1.º</div><p class="h2" style="font-size:clamp(22px,2.4vw,34px)">El español primero</p><p style="margin:4px 0 0;font-weight:600;color:var(--mist)">El arraigo, primer criterio en vivienda protegida.</p></div>
-    </div>
-    <p class="lead rise d2">Más suelo, licencias rápidas, vivienda protegida a gran escala, avales para jóvenes y derogación de la Ley de Vivienda.</p>
-  </div>
-  <p class="src">Programa económico y de vivienda de VOX; iniciativas del Grupo Parlamentario en el Congreso.</p>
-</section>
-
-<section class="slide" data-block="IV · Lo que ofrece VOX" data-title="Vivienda: la demanda disparada">
-  <div class="bg grad" data-depth="0.2"></div><div class="grain"></div>
-  <div class="two" style="grid-template-columns:minmax(0,1fr) minmax(0,1.35fr)">
-    <div class="stack">
-      <p class="kicker rise">Vivienda · destensionar el mercado</p>
-      <h2 class="h1 rise d1" style="font-size:clamp(40px,5.4vw,84px)">No es solo oferta: <span style="color:var(--green-hi)">la demanda está disparada</span></h2>
-      <div class="row rise d2" style="gap:clamp(16px,3vw,40px);flex-wrap:nowrap">
-        <div class="stat"><div class="num" style="font-size:clamp(44px,5.4vw,88px);color:var(--green-hi)">+2,7 M</div><div class="lbl"><b>residentes nacidos fuera</b> en cinco años</div></div>
-        <div class="stat"><div class="num" style="font-size:clamp(44px,5.4vw,88px)">750.000</div><div class="lbl"><b>viviendas que faltan</b></div></div>
-      </div>
-      <p class="lead rise d3" style="font-size:clamp(14px,1.3vw,18px)">Construir más no basta si la demanda crece sin control. Carlos Hernández Quero, en el Congreso.</p>
-    </div>
-    <div class="media rise d2" data-file="media/quero_1.mp4" data-next-file="media/quero_2.mp4" data-kind="video" style="aspect-ratio:16/9">
-      <div class="ph"><b>Carlos Hernández Quero · Vivienda</b></div>
-      <button class="playbtn" type="button">▶ Reproducir</button>
-    </div>
-  </div>
-  <p class="src">INE: nacidos en el extranjero, 7.292.893 (1 ene 2021) y 10.004.581 (1 ene 2026). Banco de España, Informe Anual 2025 (déficit de vivienda). Vídeo: intervención de Carlos Hernández Quero (Grupo Parlamentario VOX).</p>
-</section>
-
-<section class="slide" data-block="IV · Lo que ofrece VOX" data-title="Fronteras y remigración">
-  <div class="bg grad" data-depth="0.2"></div>
-  <div class="media" data-file="media/bg_narco.mp4" data-kind="bgvideo" style="position:absolute;inset:0;z-index:0;border:0;background:none"></div>
-  <div class="fade-bottom"></div><div class="grain"></div>
-  <div class="stack" style="gap:clamp(12px,2vh,22px)">
-    <p class="kicker rise">Fronteras seguras · lo que hará VOX</p>
-    <h2 class="h1 rise d1" style="font-size:clamp(40px,5.6vw,86px)">Orden, ley <span style="color:var(--green-hi)">y fronteras</span></h2>
-    <div class="offer rise d2" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr))">
-      <div class="panel"><h3 style="font-size:clamp(24px,2.6vw,40px)">Visados</h3><p>Se cancela la concesión de nuevos visados.</p></div>
-      <div class="panel"><h3 style="font-size:clamp(24px,2.6vw,40px)">Residencia</h3><p>Se cancela la emisión de certificados de residencia.</p></div>
-      <div class="panel"><h3 style="font-size:clamp(24px,2.6vw,40px)">Ilegales</h3><p>Expulsión de quien está en España ilegalmente.</p></div>
-      <div class="panel"><h3 style="font-size:clamp(24px,2.6vw,40px)">Delincuentes</h3><p>Expulsión también de los extranjeros legales condenados por delitos.</p></div>
-    </div>
-    <div class="panel rise d3" style="border-color:var(--green-hi);background:rgba(63,81,29,.7)">
-      <h3 style="margin:0 0 6px;font:900 clamp(26px,3vw,46px)/.9 var(--display);text-transform:uppercase;color:var(--green-hi)">Programa de remigración</h3>
-      <p style="margin:0;font-weight:600;font-size:clamp(14px,1.3vw,18px)">Para quienes viven lejos de sus países y familias y son deficitarios para el sistema; para quienes pretenden imponer por la fuerza una convivencia ilegal e inaceptable, como la ley de la sharia; y para los grupos que atacan a la policía y a las instituciones o se encierran en guetos.</p>
-    </div>
-  </div>
-  <p class="src">Propuestas de VOX para el 29N.</p>
-</section>
-
-<section class="slide cover" data-block="29N" data-title="Cierre">
+<section data-speaker="Ignacio Blanch" class="slide cover" data-block="29N" data-title="Cierre">
   <div class="bg grad" data-depth="0.3"></div>
   <div class="ghost" style="left:-4vw;top:-6vh;font-size:40vw" data-depth="-0.15">29N</div><div class="grain"></div>
   <div class="flagband" aria-hidden="true"></div>
@@ -1139,6 +1037,57 @@ const pct=(r,k)=>k==='PART'?100*r[1]/r[0]:100*r[COLS.indexOf(k)]/r[2];
   });
   svg.innerHTML=g;
 })();
+
+/* ---------- mapa de Las Rozas por zonas ---------- */
+(function(){
+  const svg=document.getElementById('rozasMap'),tb=document.getElementById('zoneTbl');if(!svg)return;
+  const GEO={"colegios":[[40.49582,-3.87119],[40.49238,-3.87361],[40.48513,-3.86975],[40.49587,-3.87733],[40.49443,-3.86539],[40.5204,-3.9216],[40.55437,-3.88688],[40.53694,-3.90037],[40.49174,-3.88295],[40.52736,-3.9202],[40.51342,-3.91663],[40.55102,-3.8989],[40.53631,-3.94266],[40.51925,-3.90385],[40.5246,-3.89229],[40.50686,-3.88811]],"ring":[[-3.9499,40.5402],[-3.9471,40.5357],[-3.9402,40.5309],[-3.9392,40.5263],[-3.9406,40.523],[-3.94,40.5192],[-3.9424,40.5148],[-3.9409,40.5126],[-3.9379,40.5115],[-3.9401,40.508],[-3.936,40.5086],[-3.9351,40.5022],[-3.9333,40.4995],[-3.927,40.499],[-3.9179,40.5012],[-3.9102,40.5013],[-3.9058,40.495],[-3.8953,40.4908],[-3.8959,40.4901],[-3.8926,40.4878],[-3.882,40.485],[-3.8808,40.4855],[-3.8776,40.4835],[-3.8733,40.4836],[-3.8556,40.4789],[-3.8522,40.4793],[-3.8367,40.475],[-3.8375,40.4755],[-3.8367,40.4809],[-3.8342,40.4841],[-3.8332,40.4878],[-3.8344,40.4941],[-3.8394,40.4994],[-3.8371,40.5059],[-3.8527,40.5102],[-3.8536,40.5113],[-3.8534,40.5146],[-3.8513,40.5177],[-3.8544,40.5214],[-3.8537,40.5244],[-3.8629,40.5346],[-3.8657,40.5434],[-3.8694,40.5474],[-3.8691,40.5482],[-3.8728,40.5534],[-3.8738,40.5576],[-3.8754,40.5588],[-3.885,40.561],[-3.8838,40.5638],[-3.8871,40.5665],[-3.889,40.5709],[-3.8855,40.5746],[-3.8904,40.5727],[-3.8956,40.5676],[-3.8964,40.5681],[-3.9057,40.5632],[-3.9091,40.5648],[-3.9118,40.562],[-3.9201,40.5577],[-3.9296,40.5577],[-3.9321,40.5599],[-3.9305,40.5571],[-3.932,40.5568],[-3.9302,40.5539],[-3.9325,40.5525],[-3.9313,40.5509],[-3.9328,40.5506],[-3.9345,40.552],[-3.9347,40.5498],[-3.9361,40.5487],[-3.9422,40.548],[-3.9438,40.5505],[-3.9455,40.551],[-3.9463,40.5461],[-3.9499,40.5402]],"A6":[[-3.9521,40.5852],[-3.9468,40.5803],[-3.9408,40.5781],[-3.9325,40.5754],[-3.9262,40.5733],[-3.9194,40.5697],[-3.9143,40.5673],[-3.9059,40.5633],[-3.9018,40.5596],[-3.8994,40.5553],[-3.8967,40.5499],[-3.8938,40.544],[-3.8916,40.5398],[-3.8887,40.5346],[-3.8871,40.5292],[-3.8866,40.5226],[-3.885,40.518],[-3.8822,40.5139],[-3.878,40.5081],[-3.8751,40.5039],[-3.8726,40.499],[-3.8686,40.494],[-3.8661,40.4894],[-3.8635,40.4853],[-3.8555,40.4822],[-3.8489,40.4796],[-3.8397,40.4762],[-3.8322,40.4746],[-3.824,40.4723],[-3.8183,40.4701]],"M505":[[-3.9598,40.5534],[-3.9581,40.5488],[-3.9583,40.5457],[-3.9562,40.541],[-3.9548,40.5378],[-3.9527,40.535],[-3.9486,40.5323],[-3.945,40.5306],[-3.9421,40.529],[-3.9414,40.5249],[-3.9384,40.5213],[-3.9373,40.5188],[-3.9352,40.5167],[-3.9308,40.5139],[-3.928,40.5128],[-3.9209,40.5099],[-3.919,40.5092],[-3.9148,40.5076],[-3.9117,40.5063],[-3.9071,40.504],[-3.9033,40.502],[-3.8998,40.5003],[-3.8954,40.4989],[-3.8921,40.4978],[-3.8872,40.4958],[-3.8841,40.4948],[-3.8796,40.4921],[-3.8768,40.4909],[-3.8729,40.4891],[-3.8686,40.488]]};
+  const Z=[['Centro','28231','#e2cfa4',[0,1,2,3,4,8]],['El Cantizal · Monterrozas','28232','#8cc56e',[5,9,10,12,13,14,15]],['Las Matas · El Pinar · Punta Galea','28290','#f1f4ec',[6,7,11]]];
+  const W=560,H=600,lon0=-3.957,lat1=40.578,kx=Math.cos(40.52*Math.PI/180),k=5150;
+  const X=l=>14+(l-lon0)*kx*k, Y=a=>10+(lat1-a)*k;
+  const path=pts=>pts.map((p,i)=>(i?'L':'M')+X(p[0]).toFixed(1)+','+Y(p[1]).toFixed(1)).join('');
+  let g=`<path d="${path(GEO.ring)}Z" fill="#262b16" stroke="#73a35d" stroke-width="2.5"/>`;
+  g+=`<clipPath id="rzclip"><path d="${path(GEO.ring)}Z"/></clipPath>`;
+  g+=`<g clip-path="url(#rzclip)" opacity=".55"><path d="${path(GEO.A6)}" fill="none" stroke="#9aa192" stroke-width="7"/><path d="${path(GEO.M505)}" fill="none" stroke="#9aa192" stroke-width="4"/></g>`;
+  const lab=(t,p,dx,dy)=>`<text x="${(X(p[0])+dx).toFixed(0)}" y="${(Y(p[1])+dy).toFixed(0)}" style="font:800 13px var(--display);fill:#c9d1c0;letter-spacing:.06em">${t}</text>`;
+  g+=lab('A-6',[-3.8905,40.5395],10,0)+lab('M-505',[-3.925,40.5115],0,-10);
+  let num=0;const NUM={};Z.forEach(z=>z[3].forEach(i=>{NUM[i]=++num}));
+  const mark=(i,x,y,r,col,txt)=>`<g class="mk" data-i="${i}" tabindex="0" role="button" aria-label="${COLEGIOS[i][0]}"><circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r.toFixed(1)}" fill="${col}" fill-opacity=".92"/>${txt?`<text x="${x.toFixed(1)}" y="${(y+4.5).toFixed(1)}" text-anchor="middle">${NUM[i]}</text>`:''}</g>`;
+  Z.forEach((z,zi)=>z[3].forEach(i=>{const [la,lo]=GEO.colegios[i];g+=zi===0?mark(i,X(lo),Y(la),5,z[2],false):mark(i,X(lo),Y(la),9+COLEGIOS[i][3]*1.25,z[2],true);}));
+  // recuadro del centro ampliado
+  const L0=-3.8885,L1=-3.861,A0=40.4825,A1=40.4985,bx=X(L0),by=Y(A1),bw=X(L1)-X(L0),bh=Y(A0)-Y(A1);
+  g+=`<rect x="${bx}" y="${by}" width="${bw}" height="${bh}" fill="none" stroke="#e2cfa4" stroke-width="1.5" stroke-dasharray="4 3"/>`;
+  const ix=18,iy=405,iw=262,ih=178,ki=Math.min((iw-20)/((L1-L0)*kx),(ih-20)/(A1-A0)),Xi=l=>ix+10+(l-L0)*kx*ki,Yi=a=>iy+10+(A1-a)*ki;
+  g+=`<line x1="${bx}" y1="${by+bh}" x2="${ix+iw}" y2="${iy}" stroke="#e2cfa4" stroke-opacity=".5"/><rect x="${ix}" y="${iy}" width="${iw}" height="${ih}" fill="#1b1f10" stroke="#e2cfa4" stroke-width="1.5"/>`;
+  g+=`<clipPath id="inclip"><rect x="${ix}" y="${iy}" width="${iw}" height="${ih}"/></clipPath><g clip-path="url(#inclip)"><path d="${GEO.A6.map((p,j)=>(j?'L':'M')+Xi(p[0]).toFixed(1)+','+Yi(p[1]).toFixed(1)).join('')}" fill="none" stroke="#9aa192" stroke-opacity=".5" stroke-width="10"/><path d="${GEO.M505.map((p,j)=>(j?'L':'M')+Xi(p[0]).toFixed(1)+','+Yi(p[1]).toFixed(1)).join('')}" fill="none" stroke="#9aa192" stroke-opacity=".5" stroke-width="6"/>`;
+  Z[0][3].forEach(i=>{const [la,lo]=GEO.colegios[i];g+=mark(i,Xi(lo),Yi(la),9+COLEGIOS[i][3]*1.05,Z[0][2],true);});
+  g+=`</g><text x="${ix+8}" y="${iy+ih-8}" style="font:800 13px var(--display);fill:#e2cfa4;letter-spacing:.12em">CENTRO · AMPLIADO</text>`;
+  g+=`<text x="330" y="70" style="font:800 17px var(--display);fill:#f1f4ec;letter-spacing:.14em">LAS MATAS</text><text x="18" y="168" style="font:800 17px var(--display);fill:#8cc56e;letter-spacing:.14em">EL CANTIZAL</text><text x="18" y="187" style="font:800 17px var(--display);fill:#8cc56e;letter-spacing:.14em">MONTERROZAS</text>`;
+  svg.innerHTML=g;
+  const p23=i=>pct(RES['02202307'][i],'VOX'),p19=i=>pct(RES['02201911'][i],'VOX'),v23=i=>RES['02202307'][i][5];
+  const mx=Math.max(...COLEGIOS.map((c,i)=>v23(i)));
+  let h='<thead><tr><th></th><th style="text-align:left">Colegio</th><th>Mesas</th><th>% nov 19</th><th>% 23J</th><th style="text-align:left">Votos 23J</th></tr></thead><tbody>';
+  Z.forEach(z=>{const ids=z[3];const ms=ids.reduce((a,i)=>a+COLEGIOS[i][3],0);const agg=e=>ids.reduce((a,i)=>a.map((v,j)=>v+RES[e][i][j]),Array(11).fill(0));
+    h+=`<tr class="zh"><td colspan="2" style="color:${z[2]}">${z[0]} <span style="color:#9aa192">· ${z[1]}</span></td><td>${ms}</td><td>${fmt(pct(agg('02201911'),'VOX'))}</td><td>${fmt(pct(agg('02202307'),'VOX'))}</td><td style="text-align:left">${agg('02202307')[5].toLocaleString('es-ES')}</td></tr>`;
+    ids.forEach(i=>{h+=`<tr class="cr" data-i="${i}"><td><span class="nb" style="background:${z[2]}">${NUM[i]}</span></td><td style="text-align:left;white-space:nowrap">${SHORT[i]}</td><td>${COLEGIOS[i][3]}</td><td>${fmt(p19(i))}</td><td style="color:var(--green-hi)">${fmt(p23(i))}</td><td style="text-align:left;white-space:nowrap"><span class="bar" style="width:${(70*v23(i)/mx).toFixed(0)}px"></span>${v23(i).toLocaleString('es-ES')}</td></tr>`;});});
+  tb.innerHTML=h+'</tbody>';
+  function sel(i){svg.querySelectorAll('.mk').forEach(m=>m.classList.toggle('sel',m.dataset.i==i));tb.querySelectorAll('tr.cr').forEach(r=>r.classList.toggle('sel',r.dataset.i==i));}
+  svg.addEventListener('click',e=>{const m=e.target.closest('.mk');if(m)sel(m.dataset.i);});
+  svg.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const m=e.target.closest('.mk');if(m){e.preventDefault();sel(m.dataset.i);}}});
+  tb.addEventListener('click',e=>{const r=e.target.closest('tr.cr');if(r)sel(r.dataset.i);});
+})();
+
+/* ---------- brasas de la diapositiva épica ---------- */
+(function(){
+  const c=document.querySelector('.epic .embers');if(!c||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  const sl=c.closest('.slide'),ctx=c.getContext('2d');let P=[],raf=0,w=0,h=0;
+  function size(){const r=c.getBoundingClientRect(),d=Math.min(2,devicePixelRatio||1);w=r.width;h=r.height;c.width=w*d;c.height=h*d;ctx.setTransform(d,0,0,d,0,0);}
+  function mk(y){return{x:Math.random()*w,y:y??h+10,r:.8+Math.random()*2.4,v:.35+Math.random()*1.1,s:Math.random()*6.28,a:.35+Math.random()*.6,g:Math.random()<.25}}
+  function loop(){ctx.clearRect(0,0,w,h);for(const p of P){p.y-=p.v;p.s+=.02;p.x+=Math.sin(p.s)*.4;if(p.y<-10)Object.assign(p,mk());const fade=Math.min(1,p.y/(h*.35));ctx.beginPath();ctx.fillStyle=p.g?`rgba(241,191,0,${p.a*fade})`:`rgba(255,${120+Math.round(80*Math.random())},60,${p.a*fade})`;ctx.shadowColor='rgba(255,160,60,.8)';ctx.shadowBlur=8;ctx.arc(p.x,p.y,p.r,0,6.28);ctx.fill();}raf=sl.classList.contains('is-on')?requestAnimationFrame(loop):0;}
+  new MutationObserver(()=>{if(sl.classList.contains('is-on')&&!raf){size();if(!P.length)P=Array.from({length:110},()=>mk(Math.random()*h));raf=requestAnimationFrame(loop);}}).observe(sl,{attributes:true,attributeFilter:['class']});
+  addEventListener('resize',()=>{if(raf)size();});
+})();
+
 /* explorador de colegios */
 (function(){
   const z=document.getElementById('zones'),det=document.getElementById('colDetail');if(!z)return;
