@@ -427,6 +427,7 @@ body{background:var(--ink-deep);color:var(--bone);font-family:var(--text);font-s
 .e5b{max-width:36ch;line-height:1.08!important;text-wrap:balance}
 
 #hemiCongreso{max-height:min(34svh,330px)}
+@media (max-width:1000px){.mapslide>.rzhint{display:none}}
 
 </style>
 <style>/* Leaflet 1.9.4 (BSD-2-Clause) */
@@ -1846,7 +1847,7 @@ const pct=(r,k)=>k==='PART'?100*r[1]/r[0]:100*r[COLS.indexOf(k)]/r[2];
   L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
     {maxZoom:19,maxNativeZoom:19,className:'sat',attribution:'Imagen © Esri, Maxar, Earthstar Geographics'}).addTo(map);
   L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Transportation/MapServer/tile/{z}/{y}/{x}',
-    {maxZoom:19,maxNativeZoom:19,className:'roads',attribution:'Calles y carreteras © Esri, HERE'}).addTo(map);
+    {maxZoom:19,maxNativeZoom:19,opacity:.85,className:'roads',attribution:'Calles y carreteras © Esri, HERE'}).addTo(map);
   L.control.zoom({position:'bottomright',zoomInTitle:'Acercar',zoomOutTitle:'Alejar'}).addTo(map);
   // zoom con pellizco de trackpad o Ctrl + rueda; la rueda normal sigue pasando diapositivas
   el.addEventListener('wheel',e=>{if(e.ctrlKey||e.metaKey){e.preventDefault();e.stopPropagation();map.setZoom(map.getZoom()-Math.sign(e.deltaY)*.5);}},{passive:false});
